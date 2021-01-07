@@ -20,7 +20,7 @@ export default class Controller {
     }
 
     addCheckbox(checkbox) {
-        this.container.appendChild(checkbox.elem);
+        this.container.prepend(checkbox.elem);
 
         checkbox.onChecked = (checkbox) => {
             const child = checkbox.makeChild();
