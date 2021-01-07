@@ -29,7 +29,7 @@ export default class Controller {
     }
 
     addCheckbox(checkbox) {
-        this.container.prepend(checkbox.elem);
+        this.container.append(checkbox.elem);
 
         checkbox.onChecked = (checkbox) => {
             const numChildren = Math.floor(2 + 2 * Math.random())
