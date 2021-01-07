@@ -23,9 +23,12 @@ export default class Controller {
         this.container.prepend(checkbox.elem);
 
         checkbox.onChecked = (checkbox) => {
-            const child = checkbox.makeChild();
-            checkbox.children.push(child);
-            this.addCheckbox(child);
+            const numChildren = Math.floor(2 + 2 * Math.random())
+            for (let i = 0; i < numChildren; i++) {
+                const child = checkbox.makeChild();
+                checkbox.children.push(child);
+                this.addCheckbox(child);
+            }
         }
 
         checkbox.onUnChecked = (checkbox) => {

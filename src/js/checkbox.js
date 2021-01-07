@@ -41,7 +41,7 @@ export class Checkbox {
 
     makeChild() {
         const angle = 2 * Math.PI * Math.random();
-        const speed = 3;
+        const speed = 2 + Math.random();
         const child = new Checkbox({
             x: this.x,
             y: this.y,
