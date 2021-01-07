@@ -7,3 +7,12 @@ body {
 	margin: 0;
 	position: relative;
 }
+
+.content {
+	width: 100vw;
+	height: 100vh;
+}
+
+.checkbox {
+	position: absolute;
+}
