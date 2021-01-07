@@ -1,4 +1,4 @@
-const dampMultiple = 0.9;
+const dampMultiple = 0.8;
 
 export class Checkbox {
 
@@ -28,7 +28,37 @@ export class Checkbox {
         }
     }
 
+    pullTowards(parent) {
+        const xDiff = this.x - parent.x;
+        const yDiff = this.y - parent.y;
+        const dist = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+        const desiredDist = 20;
+        const push = desiredDist - dist;
+
+        this.dx += 0.01 * push * (xDiff / dist);
+        this.dy += 0.01 * push * (yDiff / dist);
+    }
+
+    pushAway(other) {
+        const xDiff = this.x - other.x;
+        const yDiff = this.y - other.y;
+        const dist = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+
+        this.dx += (1 / dist) * (xDiff / dist);
+        this.dy += (1 / dist) * (yDiff / dist);
+    }
+
     update() {
+        for (const child of this.children) {
+            child.pullTowards(this);
+        }
+
+        if (this.elem.checked) {
+            this.dx = 0;
+            this.dy = 0;
+            return;
+        }
+
         this.x += this.dx;
         this.y += this.dy;
 
@@ -40,13 +70,9 @@ export class Checkbox {
     }
 
     makeChild() {
-        const angle = 2 * Math.PI * Math.random();
-        const speed = 2 + Math.random();
         const child = new Checkbox({
-            x: this.x,
-            y: this.y,
-            dx: speed * Math.cos(angle),
-            dy: speed * Math.sin(angle),
+            x: this.x + Math.random() - 0.5,
+            y: this.y + Math.random() - 0.5,
         });
         return child;
     }

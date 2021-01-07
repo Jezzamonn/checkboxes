@@ -16,6 +16,15 @@ export default class Controller {
     update() {
         for (const checkbox of this.checkboxes) {
             checkbox.update();
+
+            if (!checkbox.elem.checked) {
+                for (const other of this.checkboxes) {
+                    if (other === checkbox) {
+                        continue;
+                    }
+                    checkbox.pushAway(other);
+                }
+            }
         }
     }
 
@@ -48,7 +57,7 @@ export default class Controller {
         }
 
         this.container.removeChild(checkbox.elem);
-        this.checkboxes.splice(this.checkboxes.indexOf(checkbox));
+        this.checkboxes.splice(this.checkboxes.indexOf(checkbox), 1);
     }
 
 }
