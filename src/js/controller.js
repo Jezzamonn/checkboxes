@@ -6,7 +6,7 @@ export default class Controller {
         this.container = document.querySelector('#content');
 
         this.checkboxes = [];
-        this.addCheckbox(new Checkbox({x: window.innerWidth / 2, y: window.innerHeight / 2}));
+        this.addCheckbox(new Checkbox({x: 0, y: 0}));
 
     }
 

@@ -6,13 +6,17 @@ body {
 	padding: 0;
 	margin: 0;
 	position: relative;
-}
-
-.content {
 	width: 100vw;
 	height: 100vh;
 }
 
+.content {
+	position: absolute;
+	left: 50vw;
+	top: 50vh;
+}
+
 .checkbox {
 	position: absolute;
+	transform: translate(-50%, -50%);
 }
